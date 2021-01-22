@@ -269,7 +269,8 @@ class EdhocRole(metaclass=ABCMeta):
         hash_func = config_cose(self.cipher_suite.hash).hash
 
         input_th = [self.transcript(hash_func, self._th3_input), self.msg_3.ciphertext]
-        return b''.join([cbor2.dumps(part) for part in input_th])
+        res = b''.join([cbor2.dumps(part) for part in input_th])
+        return res
 
     @property
     @functools.lru_cache()
